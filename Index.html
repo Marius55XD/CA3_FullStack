@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>World Cup Finals Google Map</title>
+        <link rel="icon" type="image/png" href="Images/worldCupIcon.png">
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta http-equiv="Content-Language" content="en" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="CSS/style.css">
+        <link rel="manifest" href="JSON/manifest.json">
+        <link rel="icon" href="Images/worldCupIcon.png" type="image/png">
+        <link rel="apple-touch-icon" href="Images/worldCupIcon.png">
+        <meta name="msapplication-TileImage" content="Images/worldCupIcon.png">
+        <meta name="msapplication-TileColor" content="#0f1e3d">
+        <meta name="theme-color" content="#1a2e52">
+        <script src="JS/script.js"></script>
+        
+    </head> 
+
+    <body>
+        <header class="ms_header">
+            <img src="Images/worldCupIcon.png" alt="World Cup Icon" class="ms_headerIcon">
+            <h1>World Cup Finals</h1>
+            <h2>Google Map Locations</h2>
+        </header>
+        <!-- Navigation -->
+        <nav class="ms_navWrapper">
+            <button type="button" class="ms_hamburger" id="ms_menuToggle" aria-controls="ms_mainNav" aria-expanded="false" onclick="toggleMobileMenu()">
+                <i class="ms_materialIcons" aria-hidden="true">menu</i>
+                <span>Menu</span>
+            </button>
+            
+            <!-- Main navigation buttons -->
+            <div class="ms_nav" id="ms_mainNav">
+                <button type="button" class="ms_navButton" data-panel="ms_routeControlsPanel" onclick="showSidebarPanel('ms_routeControlsPanel'); closeMobileMenuOnSmallScreens()">Route &amp; Directions</button>
+                <button type="button" class="ms_navButton" onclick="clearRoute(); closeMobileMenuOnSmallScreens()">Map</button>
+                <button type="button" class="ms_navButton" data-panel="ms_mapOptionsPanel" onclick="showSidebarPanel('ms_mapOptionsPanel'); closeMobileMenuOnSmallScreens()">Map Options</button>
+            </div>
+        </nav>
+
+        <main class="ms_main">
+            <aside class="ms_sidebar">
+                <section class="ms_panel" id="ms_routeControlsPanel" hidden>
+                    <h3 class="ms_panelTitle" id="ms_routeControlsTitle">Route Controls</h3>
+                    <div class="ms_controlsColumn">
+
+                        <!-- Start and end point inputs -->
+                        <div class="ms_controlsGroup ms_controlsRow">
+                            <label for="start">Start:</label>
+                            <input id="start" type="text">
+                        </div>
+
+                        <div class="ms_controlsGroup ms_controlsRow">
+                            <label for="end">End:</label>
+                            <input id="end" type="text">
+                        </div>
+                    <!-- stop selection-->
+                        <div class="ms_controlsGroup ms_controlsRow ms_stopHeader">
+                            <label>Stops:</label>
+                            <button type="button" id="add-stop" class="ms_addStopButton" onclick="addStopInput()">Add Stop</button>
+                        </div>
+
+                        <div id="ms_stopsContainer" class="ms_stopContainer" aria-label="Intermediate stops"></div>
+
+                        <!-- Route submit/cancel buttons -->
+                        <button type="button" id="ms_getDirections" class="ms_routeGetDirections" onclick="calculateRoute()">Get Directions</button>
+                        <button type="button" id="ms_cancelRoute" class="ms_routeCancelButton" onclick="clearRoute()">Cancel Route</button>
+
+                        <div class="ms_controlsGroup ms_controlsRow">
+                            <label>Transport:</label>
+                        </div>
+
+                        <!-- Transport mode buttons -->
+                        <div class="ms_transportButtons" aria-label="Transport mode quick buttons">
+                            <button type="button" class="ms_transportButton is-active" data-mode="DRIVING" onclick="calculateRoute('DRIVING')"><i class="ms_materialIcons">directions_car</i></button>
+                            <button type="button" class="ms_transportButton" data-mode="TRANSIT" onclick="calculateRoute('TRANSIT')"><i class="ms_materialIcons">directions_bus</i></button>
+                            <button type="button" class="ms_transportButton" data-mode="BICYCLING" onclick="calculateRoute('BICYCLING')"><i class="ms_materialIcons">directions_bike</i></button>
+                            <button type="button" class="ms_transportButton" data-mode="WALKING" onclick="calculateRoute('WALKING')"><i class="ms_materialIcons">directions_walk</i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Directions output -->
+                    <h3 class="ms_panelTitle" id="ms_directionsTitle">Directions</h3>
+                    <div id="ms_directions"></div>
+                </section>
+                
+                <!-- Map options panel -->
+                <section class="ms_panel" id="ms_mapOptionsPanel" aria-labelledby="ms_mapOptionsTitle" hidden>
+                    <h3 class="ms_panelTitle" id="ms_mapOptionsTitle">Map Options</h3>
+                    <div class="ms_controlsColumn">
+
+                        <!--Points of Interest-->
+                        <div class="ms_controlsGroupRow">
+                            <label>Points of Interest:</label>
+                        </div>
+                        
+
+                        <!--Filter dropdown-->
+                        <button type="button" id="ms_poiToggleButton" class="ms_poiButton" onclick="togglePointsOfInterest()">Hide POI</button>
+                        <div class="ms_filterRow">
+                            <label for="ms_locationFilter">Filter content:</label>
+                            <select id="ms_locationFilter" onchange="updateLocationFilter()">
+                                <option value="all">All locations</option>
+                                <option value="Attraction">Attractions</option>
+                                <option value="Landmark">Landmarks</option>
+                                <option value="Park">Parks</option>
+                                <option value="Stadium">Stadiums</option>
+                                <option value="Bridge">Bridges</option>
+                                <option value="Shopping and entertainment">Shopping and entertainment</option>
+                                <option value="Monument">Monuments</option>
+                            </select>
+                        </div>
+
+                        <!--Hotels nearby-->
+                        <div class="ms_controlsGroupRow">
+                            <label>Nearby Services:</label>
+                        </div>
+                        <button type="button" id="ms_hotelToggleButton" class="ms_poiButton" onclick="toggleHotels()">Show Hotels</button>
+                        <button type="button" id="ms_barToggleButton" class="ms_poiButton" onclick="toggleBars()">Show Bars</button>
+                        <button type="button" id="ms_restaurantToggleButton" class="ms_poiButton" onclick="toggleRestaurants()">Show Restaurants</button>
+                        <button type="button" id="ms_busStopToggleButton" class="ms_poiButton" onclick="toggleBusStops()">Show Bus Stops</button>
+                    </div>
+                </section>
+
+            </aside>
+            <!-- Map container -->
+            <section class="ms_mapContainerPanel">
+                <div id="map"></div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="ms_footer" id="footer">
+            <p>&copy; 2026 World Cup Finals Map.</p>
+        </footer>    
+
+        <!-- Google Maps API Key -->
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGRlW1JBzDerS1v1rBeFPWnqnqpaQ05zE&loading=async&callback=loadMap&libraries=marker,places"></script>         		
+        <!-- Register service worker (for PWA offline support) -->
+        <script>
+            window.addEventListener('load', () => {
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('./service-worker.js').catch(console.error);
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "World Cup Finals Map",
+  "short_name": "WC Map",
+  "description": "Maps and tourist info for the 2026 World Cup host cities.",
+  "start_url": "../Index.html",
+  "scope": "../",
+  "display": "standalone",
+  "background_color": "#0f1e3d",
+  "theme_color": "#1a2e52",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "../Images/worldCupIcon.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    },
+    {
+      "src": "../Images/stadiumIcon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+
+}

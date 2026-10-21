@@ -1,0 +1,82 @@
+[
+  {
+    "name": "MetLife Stadium",
+    "description": "East Rutherford, New Jersey",
+    "category": "Stadium",
+    "rating": 4.5,
+    "user_ratings_total": 26598,
+    "website": "https://www.metlifestadium.com/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/04/Metlife_stadium_%28Aerial_view%29.jpg",
+    "place_id": "ChIJwbHJW9tYwokRYrjwSwWU7tI",
+    "lat": 40.8135,
+    "lng": -74.0745
+  },
+  {
+    "name": "Times Square",
+    "description": "Busy tourist area with bright lights",
+    "category": "Attraction",
+    "website": "https://www.timessquarenyc.org/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg",
+    "place_id": "ChIJmQJIxlVYwokRLgeuocVOGVU",
+    "lat": 40.7580,
+    "lng": -73.9855
+  },
+  {
+    "name": "Central Park",
+    "description": "Large public park in New York",
+    "category": "Park",
+    "website": "https://www.centralparknyc.org/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Global_Citizen_Festival_Central_Park_New_York_City_from_NYonAir_%2815351915006%29.jpg",
+    "place_id": "ChIJ4zGFAZpYwokRGUGph3Mf37k",
+    "lat": 40.7829,
+    "lng": -73.9654
+  },
+  {
+    "name": "American Dream",
+    "description": "Large shopping and entertainment complex near the stadium",
+    "category": "Shopping and entertainment",
+    "rating": 4.5,
+    "user_ratings_total": 43072,
+    "website": "https://www.americandream.com/",
+    "image": "Images/AmericanDream.jpg",
+    "place_id": "ChIJ0fHMhL9YwokRWpyeAyE-gNs",
+    "lat": 40.8099,
+    "lng": -74.0738
+  },
+  {
+    "name": "Empire State Building",
+    "description": "Iconic skyscraper and one of New York's most famous viewpoints",
+    "category": "Landmark",
+    "rating": 4.7,
+    "user_ratings_total": 126572,
+    "website": "https://www.esbnyc.com/",
+    "image": "Images/empireBuilding.jpg",
+    "place_id": "ChIJ2eUj5vJYwokR9mKyFmh9AzM",
+    "lat": 40.7484,
+    "lng": -73.9857
+  },
+  {
+    "name": "Brooklyn Bridge",
+    "description": "Historic bridge with great walking views of Manhattan and the river",
+    "category": "Bridge",
+    "rating": 4.8,
+    "user_ratings_total": 91784,
+    "website": "https://www.nyc.gov/html/dot/html/infrastructure/brooklyn-bridge.shtml",
+    "image": "Images/brooklynBridge.jpg",
+    "place_id": "ChIJZ3A7h-hZwokRgVmU0I1rBwI",
+    "lat": 40.7061,
+    "lng": -73.9969
+  },
+  {
+    "name": "Statue of Liberty",
+    "description": "Famous symbol of New York and a major sightseeing destination",
+    "category": "Monument",
+    "rating": 4.7,
+    "user_ratings_total": 112137,
+    "website": "https://www.nps.gov/stli/index.htm",
+    "image": "Images/statueOfLiberty.jpg",
+    "place_id": "ChIJi7uNhHZbwokRhpw9AwHQW7A",
+    "lat": 40.6892,
+    "lng": -74.0445
+  }
+]
